@@ -420,7 +420,7 @@ class Pi0(_model.BaseModel):
             if self.effort_type != EffortType.EXPERT_HIS_C_L_FUT:
                 v_t = self.action_out_proj(suffix_out[:, -self.action_horizon:])
             else:
-                v_t = suffix_out[:, -self.action_horizon-1:-1]
+                v_t = self.action_out_proj(suffix_out[:, -self.action_horizon-1:-1])
 
             return x_t + dt * v_t, time + dt
 
